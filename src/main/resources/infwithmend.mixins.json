@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.7",
+  "package": "cn.irchat.infwithmend.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "infwithmend.refmap.json",
+  "mixins": [
+    "InfinityEnchantmentMixin"
+  ],
+  "client": [],
+  "server": []
+}

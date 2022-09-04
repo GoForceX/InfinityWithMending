@@ -1,16 +1,16 @@
 package cn.irchat.infwithmend.mixin;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentArrowInfinite;
-import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.enchantment.EnchantmentType;
+import net.minecraft.enchantment.InfinityEnchantment;
+import net.minecraft.inventory.EquipmentSlotType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(EnchantmentArrowInfinite.class)
+@Mixin(InfinityEnchantment.class)
 public class InfinityEnchantmentMixin extends Enchantment {
-    public InfinityEnchantmentMixin(Rarity rarityIn, EntityEquipmentSlot... slots) {
-        super(rarityIn, EnumEnchantmentType.BOW, slots);
+    protected InfinityEnchantmentMixin(Rarity rarity, EquipmentSlotType[] types) {
+        super(rarity, EnchantmentType.BOW, types);
     }
 
     /**
@@ -18,7 +18,7 @@ public class InfinityEnchantmentMixin extends Enchantment {
      * @reason Remove the check for apply infinity enchantment and mending together.
      */
     @Overwrite(remap = false)
-    public boolean canApplyTogether(Enchantment ench) {
+    public boolean checkCompatibility(Enchantment ench) {
         return this != ench;
     }
 }
